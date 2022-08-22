@@ -1,7 +1,7 @@
 import requests
 import logging
 import re
-import pymongo
+# import pymongo
 from pyquery import PyQuery as pq
 from urllib.parse import urljoin
 import multiprocessing
@@ -11,14 +11,14 @@ logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s - %(levelname)s: %(message)s')
 
 BASE_URL = 'https://ssr1.scrape.center'
-TOTAL_PAGE = 10
-MONGO_CONNECTION_STRING = 'mongodb://localhost:27017'
-MONGO_DB_NAME = 'movies'
-MONGO_COLLECTION_NAME = 'movies'
-
-client = pymongo.MongoClient(MONGO_CONNECTION_STRING)
-db = client['movies']
-collection = db['movies']
+TOTAL_PAGE = 1
+# MONGO_CONNECTION_STRING = 'mongodb://localhost:27017'
+# MONGO_DB_NAME = 'movies'
+# MONGO_COLLECTION_NAME = 'movies'
+#
+# client = pymongo.MongoClient(MONGO_CONNECTION_STRING)
+# db = client['movies']
+# collection = db['movies']
 
 
 def scrape_page(url):
@@ -122,7 +122,7 @@ def main(page):
         data = parse_detail(detail_html)
         logging.info('get detail data %s', data)
         logging.info('saving data to mongodb')
-        save_data(data)
+        # save_data(data)
         logging.info('data saved successfully')
 
 
